@@ -1,0 +1,25 @@
+name: tab_buttons
+description: Tab Buttons
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  buttons_tabbar: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  module:
+    androidX: true
+    androidPackage: com.example.tab_buttons
+    iosBundleIdentifier: com.example.tabButtons
