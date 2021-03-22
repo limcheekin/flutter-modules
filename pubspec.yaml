@@ -12,9 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   nested_list:
-    path: ./nested_list
+    path: nested_list
   tab_buttons:
-    path: ./tab_buttons
+    path: tab_buttons
 
   cupertino_icons: ^1.0.2
 
