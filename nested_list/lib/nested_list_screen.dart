@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'list_item.dart';
 
 class NestedListScreen extends StatefulWidget {
-  NestedListScreen({Key key}) : super(key: key);
+  NestedListScreen({Key? key}) : super(key: key);
 
   @override
   _NestedListScreenState createState() => _NestedListScreenState();
 }
 
 class _NestedListScreenState extends State<NestedListScreen> {
-  final List<Map<String, Object>> nestedListData = [
+  final List<Map<String, Object?>> nestedListData = [
     {
       'size': null,
       'data': ['1.0', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6'],

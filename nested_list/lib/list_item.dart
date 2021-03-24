@@ -6,7 +6,7 @@ import 'content_card.dart';
 import 'horizontal_list.dart';
 
 class ListItem extends StatefulWidget {
-  const ListItem(this.nestedListData, this.index, {Key key}) : super(key: key);
+  const ListItem(this.nestedListData, this.index, {Key? key}) : super(key: key);
 
   final nestedListData;
   final index;

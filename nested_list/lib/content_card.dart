@@ -5,7 +5,7 @@ class ContentCard extends StatelessWidget {
     this.listData,
     this.numberOfRows,
     this.setSizeFn, {
-    Key key,
+    Key? key,
   }) : super(key: key);
   final listData;
   final numberOfRows;
@@ -27,13 +27,13 @@ class ContentCard extends StatelessWidget {
 
   Widget _buildCardContent(
     BuildContext context,
-    String text,
+    String? text,
     int size,
-    Function setSizeFn,
+    Function? setSizeFn,
   ) {
     final showMoreButton = setSizeFn != null;
     final iconSize = 24.0;
-    List<Widget> children = List.filled(size, null);
+    List<Widget> children = List.filled(size, SizedBox.shrink());
     for (var i = 0; i < size; i++) {
       children[i] = Text(
         "$text $i",
@@ -93,7 +93,7 @@ class ContentCard extends StatelessWidget {
                         //print("more button pressed. parentIndex: $parentIndex");
                         print('context.size.width = ${context.size?.width}');
                         print('context.size.height = ${context.size?.height}');
-                        setSizeFn(context.size);
+                        setSizeFn!(context.size);
                       },
                     ),
                   ),
