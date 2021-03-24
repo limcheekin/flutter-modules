@@ -1,0 +1,35 @@
+name: source_code_view
+description: A new flutter module project.
+
+version: 1.0.0+1
+
+publish_to: "none"
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_syntax_view: ^3.2.2
+  animate_icons: ^2.0.0
+  url_launcher: ^6.0.2
+  flutter_markdown: ^0.6.0
+  shimmer: ^2.0.0-nullsafety.0
+  package_info_plus: ^1.0.0
+  pubspec_parse: ^1.0.0
+  common_ui:
+    path: ../common_ui
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  module:
+    androidX: true
+    androidPackage: com.example.source_code_view
+    iosBundleIdentifier: com.example.sourceCodeView
