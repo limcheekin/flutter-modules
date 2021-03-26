@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showcase/license_view.dart';
 import 'package:showcase/read_me_view.dart';
-import 'package:source_code_view/multiple_requests_http_client.dart';
 import 'package:source_code_view/source_code_view.dart';
 
 class Showcase extends StatelessWidget {
@@ -14,7 +13,6 @@ class Showcase extends StatelessWidget {
   final List<String> codePaths;
   final bool isShowDependencies;
   final List<String> showDependencies;
-  final MultipleRequestsHttpClient client;
 
   const Showcase({
     @required this.widget,
@@ -26,7 +24,6 @@ class Showcase extends StatelessWidget {
     this.codePaths,
     this.isShowDependencies = true,
     this.showDependencies,
-    this.client,
     Key key,
   }) : super(key: key);
 
@@ -78,7 +75,6 @@ class Showcase extends StatelessWidget {
                   repository: repository,
                   ref: ref,
                   path: this.license,
-                  // client: httpClient,
                 ),
               ),
             ],

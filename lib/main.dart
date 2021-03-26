@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nested_list/nested_list_screen.dart';
+import 'package:showcase/showcase_screen.dart';
 import 'package:tab_buttons/tab_buttons_screen.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
     List<String> names = [
       'Nested List',
       'Tab Buttons',
+      'Showcase',
     ];
     return MaterialApp(
       home: Scaffold(
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
                           break;
                         case 1:
                           _gotoScreen(context, TabButtonsScreen());
+                          break;
+                        case 2:
+                          _gotoScreen(context, ShowcaseScreen());
                           break;
                         default:
                       }

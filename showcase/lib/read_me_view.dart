@@ -10,6 +10,7 @@ class ReadMeView extends AbstractGithubView {
     @required String ref,
     @required String path,
     MultipleRequestsHttpClient client,
+    bool wantKeepAlive = true,
     Key key,
   }) : super(
           owner: owner,
@@ -17,9 +18,14 @@ class ReadMeView extends AbstractGithubView {
           ref: ref,
           path: path,
           client: client,
+          wantKeepAlive: wantKeepAlive,
           key: key,
         );
+  @override
+  _ReadMeViewState createState() => _ReadMeViewState();
+}
 
+class _ReadMeViewState extends AbstractGithubViewState<ReadMeView> {
   @override
   Widget buildWidget(BuildContext context, String responseBody) {
     return Expanded(

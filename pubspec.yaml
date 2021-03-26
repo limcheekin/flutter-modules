@@ -6,7 +6,7 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -15,6 +15,8 @@ dependencies:
     path: nested_list
   tab_buttons:
     path: tab_buttons
+  showcase:
+    path: showcase  
 
   cupertino_icons: ^1.0.2
 

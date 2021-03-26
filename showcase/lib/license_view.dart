@@ -9,6 +9,7 @@ class LicenseView extends AbstractGithubView {
     @required String ref,
     @required String path,
     MultipleRequestsHttpClient client,
+    bool wantKeepAlive = true,
     Key key,
   }) : super(
           owner: owner,
@@ -16,10 +17,14 @@ class LicenseView extends AbstractGithubView {
           ref: ref,
           path: path,
           client: client,
-          hasCopyButton: false,
+          wantKeepAlive: wantKeepAlive,
           key: key,
         );
+  @override
+  _LicenseViewState createState() => _LicenseViewState();
+}
 
+class _LicenseViewState extends AbstractGithubViewState<LicenseView> {
   @override
   Widget buildWidget(BuildContext context, String responseBody) {
     return Text(responseBody);
