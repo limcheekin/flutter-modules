@@ -5,7 +5,7 @@ import 'showcase.dart';
 class ShowcaseScreen extends StatelessWidget {
   static const owner = 'limcheekin';
   static const repository = 'flutter-widgets-explorer';
-  static const branch = 'source_code_view';
+  static const branch = 'showcase';
 
   const ShowcaseScreen({Key key}) : super(key: key);
 
@@ -17,22 +17,30 @@ class ShowcaseScreen extends StatelessWidget {
       ),
       body: Showcase(
         widget: Center(
-          child: Text('This is center text.'),
+          child: Text('This is your widget.'),
         ),
         owner: owner,
         repository: repository,
         ref: branch,
-        readMe: 'lib/source_code_view/README.md',
+        readMe: 'showcase/README.md',
         codePaths: [
-          'lib/source_code_view/multiple_requests_http_client.dart',
+          'showcase/pubspec.yaml',
+          'showcase/lib/main.dart',
+          'common_ui/lib/my_module.dart',
+          'showcase/lib/showcase_screen.dart',
+          'showcase/lib/showcase.dart',
+          'showcase/lib/read_me_view.dart',
+          'showcase/lib/license_view.dart',
         ],
-        showDependencies: [
-          'http',
-          'animate_icons',
-          'flutter_syntax_view',
-          'shimmer',
-          'url_launcher',
-          'pubspec_parse',
+        additionalTabs: [
+          Tab(text: 'Car'),
+          Tab(text: 'Transit'),
+          Tab(text: 'Bike'),
+        ],
+        additionalTabBarViews: [
+          Icon(Icons.directions_car),
+          Icon(Icons.directions_transit),
+          Icon(Icons.directions_bike),
         ],
       ),
     );
