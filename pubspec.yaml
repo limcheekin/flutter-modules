@@ -12,7 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_modular: ^3.0.2+1  
+  flutter_modular: ^3.0.2+1
+  responsive_builder: ^0.4.1
   nested_list:
     path: nested_list
   tab_buttons:

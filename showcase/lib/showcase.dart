@@ -101,19 +101,22 @@ class Showcase extends StatelessWidget {
 
     return DefaultTabController(
       length: tabs.length,
-      child: Column(children: [
-        TabBar(
-          isScrollable: true,
-          labelColor: Colors.blue,
-          unselectedLabelColor: Colors.black,
-          tabs: tabs,
-        ),
-        Expanded(
-          child: TabBarView(
-            children: tabBarViews,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TabBar(
+            isScrollable: true,
+            labelColor: Colors.blue,
+            unselectedLabelColor: Colors.black,
+            tabs: tabs,
           ),
-        ),
-      ]),
+          Expanded(
+            child: TabBarView(
+              children: tabBarViews,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

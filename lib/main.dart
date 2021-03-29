@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nested_list/nested_list_screen.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:showcase/showcase_screen.dart';
 import 'package:tab_buttons/tab_buttons_screen.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -38,23 +39,86 @@ class AppWidget extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return ScreenTypeLayout.builder(
+      mobile: (BuildContext context) => NarrowLayout(),
+      tablet: (BuildContext context) => NarrowLayout(),
+      desktop: (BuildContext context) => WideLayout(),
+    );
+  }
+}
+
+class NarrowLayout extends StatelessWidget {
+  const NarrowLayout({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Widgets'),
       ),
       body: ListView.builder(
         itemCount: appModule.routes.length - 1,
-        itemBuilder: (BuildContext context, int position) {
-          final route = appModule.routes[position + 1];
+        itemBuilder: (BuildContext context, int index) {
+          final routerName = appModule.routes[index + 1].routerName;
           return Card(
             margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
             child: ListTile(
-              title: Text(route.routerName.substring(1).toTitleCase()),
+              title: Text(routerName.substring(1).toTitleCase()),
               trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () => Modular.to.navigate(route.routerName),
+              onTap: () => Modular.to.navigate(routerName),
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class WideLayout extends StatefulWidget {
+  const WideLayout({Key key}) : super(key: key);
+
+  @override
+  _WideLayoutState createState() => _WideLayoutState();
+}
+
+class _WideLayoutState extends State<WideLayout> {
+  int _selectedIndex = -1;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter Widgets'),
+      ),
+      body: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: ListView.builder(
+              itemCount: appModule.routes.length - 1,
+              itemBuilder: (BuildContext context, int index) {
+                final routerName = appModule.routes[index + 1].routerName;
+                return ListTile(
+                  title: Text(routerName.substring(1).toTitleCase()),
+                  selected: index == _selectedIndex,
+                  onTap: () {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                );
+              },
+            ),
+          ),
+          Expanded(
+            flex: 7,
+            child: _selectedIndex == -1
+                ? Center(
+                    child:
+                        Text('Select the showcase you interested on the left'),
+                  )
+                : appModule.routes[_selectedIndex + 1].child(context, null),
+          ),
+        ],
       ),
     );
   }
