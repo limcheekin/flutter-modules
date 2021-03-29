@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  stacked: ^1.9.8
+  stacked_services: ^0.7.3  
   nested_list:
     path: nested_list
   tab_buttons:
@@ -24,5 +27,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  stacked_generator: ^0.2.7
+  build_runner: ^1.12.2
+
 flutter:
   uses-material-design: true
+
+scripts:
+  build: flutter pub run build_runner build --delete-conflicting-outputs  

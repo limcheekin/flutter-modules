@@ -1,60 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:nested_list/nested_list_screen.dart';
-import 'package:showcase/showcase_screen.dart';
-import 'package:tab_buttons/tab_buttons_screen.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'app.locator.dart';
+import 'app.router.dart';
+import 'string.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> names = [
-      'Nested List',
-      'Tab Buttons',
-      'Showcase',
-    ];
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter Widgets'),
-          ),
-          body: Center(
-            child: ListView.builder(
-              itemCount: names.length,
-              itemBuilder: (BuildContext context, int position) {
-                var name = names[position];
-                return Card(
-                  margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
-                  child: ListTile(
-                    title: Text(name),
-                    trailing: Icon(Icons.keyboard_arrow_right),
-                    onTap: () {
-                      switch (position) {
-                        case 0:
-                          _gotoScreen(context, NestedListScreen());
-                          break;
-                        case 1:
-                          _gotoScreen(context, TabButtonsScreen());
-                          break;
-                        case 2:
-                          _gotoScreen(context, ShowcaseScreen());
-                          break;
-                        default:
-                      }
-                    },
-                  ),
-                );
-              },
-            ),
-          )),
+      title: 'Flutter Widgets Explorer',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
+}
 
-  void _gotoScreen(BuildContext context, Widget screen) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => screen,
-    ));
+class HomeScreen extends StatelessWidget {
+  final _nagivationService = locator<NavigationService>();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter Widgets'),
+      ),
+      body: ListView.builder(
+        itemCount: Routes.all.length - 1,
+        itemBuilder: (BuildContext context, int position) {
+          final routeName = Routes.all.elementAt(position + 1);
+          return Card(
+            margin: EdgeInsets.fromLTRB(8, 4, 8, 4),
+            child: ListTile(
+              title: Text(routeName.substring(1).toTitleCase()),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () => _nagivationService.navigateTo(routeName),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
